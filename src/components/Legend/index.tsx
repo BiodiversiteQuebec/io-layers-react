@@ -33,6 +33,8 @@ function Legend(props: any) {
     right = 0,
     scale = "",
     setLogTransform,
+    scaleOn,
+    setScaleOn,
   } = props;
   const myId = useRef(1);
   const scaleRef = useRef(scale);

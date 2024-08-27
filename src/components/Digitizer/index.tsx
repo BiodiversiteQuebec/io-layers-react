@@ -84,7 +84,7 @@ export default function Digitizer({
         onCreated={handleChange}
         onDeleted={handleDeletePlace}
         draw={{
-          rectangle: layerOptions,
+          rectangle: false,
           circle: false,
           polyline: false,
           polygon: layerOptions,

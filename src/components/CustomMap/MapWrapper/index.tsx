@@ -204,8 +204,8 @@ function MapWrapper(props: any) {
     <>
       <MapWrapperContainer>
         <MapContainer
-          zoom={3}
-          center={[20, 0]}
+          zoom={5}
+          center={[50, -73]}
           zoomControl={false}
           style={{
             width: mapWidth,

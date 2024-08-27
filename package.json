@@ -53,7 +53,6 @@
     "@types/underscore": "^1.11.4"
   },
   "scripts": {
-    "dev": "vite",
     "devio": "vite -m io",
     "devacer": "vite -m acer",
     "build": "vite build",

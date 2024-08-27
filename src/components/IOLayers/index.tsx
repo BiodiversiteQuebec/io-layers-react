@@ -27,6 +27,7 @@ export default function IOLayers(props: any) {
   const [selectedLayerTiles, setSelectedLayerTiles] = useState("");
   const [legend, setLegend] = useState({});
   const [colormap, setColormap] = useState("inferno");
+  const [scaleOnMinMax, setScaleOnMinMax] = useState(false);
   const [colormapList, setColormapList] = useState(quantcmaps);
   const [isTimeSeriesCollection, setIsTimeSeriesCollection] = useState(false);
   const [timeSeriesLayers, setTimeSeriesLayers] = useState([]);
@@ -37,6 +38,11 @@ export default function IOLayers(props: any) {
   const logIt = (event: any) => {
     event.stopPropagation();
     setLogTransform(event.target.checked);
+  };
+
+  const changeScaleOnMinMax = (event: any) => {
+    event.stopPropagation();
+    setScaleOnMinMax(event.target.checked);
   };
 
   const sidebarProps = {
@@ -50,6 +56,7 @@ export default function IOLayers(props: any) {
     quantcmaps,
     colormap,
     logIt,
+    changeScaleOnMinMax,
     setIsTimeSeriesCollection,
     setTimeSeriesLayers,
   };
@@ -88,6 +95,10 @@ export default function IOLayers(props: any) {
         };
         let min = data.percentile_2;
         let max = data.percentile_98;
+        if (scaleOnMinMax) {
+          min = data.min;
+          max = data.max;
+        }
         if (min === max) {
           min = data.min;
           max = data.max;
@@ -100,7 +111,7 @@ export default function IOLayers(props: any) {
         setLegend(createRangeLegendControl(min, max, cmap(colormap)));
       });
     }
-  }, [selectedLayerURL, logTransform, colormap]);
+  }, [selectedLayerURL, logTransform, colormap, scaleOnMinMax]);
 
   useEffect(() => {
     if (

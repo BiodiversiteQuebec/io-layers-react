@@ -20,13 +20,17 @@ export default function BarChart({ data, bounds }: Props) {
         Plot.rectY(data, {
           y2: "yval",
           x: "xval",
-          interval: Math.ceil((bounds[1] - bounds[0]) / 20),
+          interval:
+            bounds[1] > 2
+              ? Math.ceil((bounds[1] - bounds[0]) / 20)
+              : (bounds[1] - bounds[0]) / 20,
           mixBlendMode: "saturation",
           fy: "place",
           fill: "place",
         }),
         Plot.axisX(d3.ticks(bounds[0], bounds[1], 15), {
           label: "Value",
+          tickFormat: (d, i, _) => d,
         }),
         Plot.axisY({ label: "Frequency", marginTop: 100 }),
         Plot.ruleY([0]),

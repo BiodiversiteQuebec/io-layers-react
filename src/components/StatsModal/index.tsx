@@ -62,8 +62,12 @@ export default function StatsModal(props: any) {
           let m = -999999;
           for (let i = 0; i < h[0].length; i++) {
             m = Math.max(m, h[0][i]);
-            minx = Math.floor(Math.min(minx, h[1][i]));
-            maxx = Math.ceil(Math.max(maxx, h[1][i]));
+            minx = Math.min(minx, h[1][i]);
+            maxx = Math.max(maxx, h[1][i]);
+            if (maxx > 2) {
+              minx = Math.floor(minx);
+              maxx = Math.ceil(maxx);
+            }
           }
           for (let i = 0; i < h[0].length; i++) {
             hd.push({ xval: h[1][i], yval: h[0][i] / m, place: place });

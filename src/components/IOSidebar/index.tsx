@@ -26,6 +26,7 @@ function IOSidebar(props: any) {
     quantcmaps,
     colormap,
     logIt,
+    changeScaleOnMinMax,
     setIsTimeSeriesCollection,
     setTimeSeriesLayers,
   } = props;
@@ -400,6 +401,13 @@ function IOSidebar(props: any) {
             sx={{ textShadow: "1px 1px 1px #000000" }}
             control={<Switch onChange={logIt} color="secondary" />}
             label="SQRT transform?"
+          />
+          <FormControlLabel
+            sx={{ textShadow: "1px 1px 1px #000000" }}
+            control={
+              <Switch onChange={changeScaleOnMinMax} color="secondary" />
+            }
+            label="Scale on min/max"
           />
         </FormGroup>
       </Stack>

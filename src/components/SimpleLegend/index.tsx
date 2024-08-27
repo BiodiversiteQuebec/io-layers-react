@@ -44,7 +44,14 @@ export function createRangeLegendControl(
     const div = L.DomUtil.create("div", "legend");
 
     const step = (max - min) / (scaleColors.length - 1);
-    const roundFactor = max <= 10 ? 100 : 1;
+    let roundFactor = 1;
+    if (max <= 10 && max > 1) {
+      roundFactor = 100;
+    } else if (max <= 1 && max > 0.1) {
+      roundFactor = 1000;
+    } else if (max < 0.1) {
+      roundFactor = 10000;
+    }
 
     const items = scaleColors.map((color: any, i: number) => {
       return {
@@ -53,9 +60,11 @@ export function createRangeLegendControl(
       };
     });
     div.innerHTML = ReactDOMServer.renderToStaticMarkup(
-      <div className="legend-group">
-        <Legend items={items} />
-      </div>
+      <>
+        <div className="legend-group">
+          <Legend items={items} />
+        </div>
+      </>
     );
     return div;
   };
