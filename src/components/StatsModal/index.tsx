@@ -43,7 +43,7 @@ export default function StatsModal(props: any) {
     height: 10,
     borderRadius: 5,
     [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor: "#038c7c",
+      backgroundColor: "#e0b658",
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,

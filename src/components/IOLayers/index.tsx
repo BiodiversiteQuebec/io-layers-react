@@ -9,7 +9,7 @@ import IOSidebar from "../IOSidebar";
 import CustomMap from "../CustomMap";
 import LeftContentGroup from "../LeftContentGroup";
 import RightContentGroup from "../RightContentGroup";
-import { AppContainer, BottomNavBarContainer, GlobalStyle } from "src/styles";
+import { AppContainer, BottomNavBarContainer, GlobalStyle } from "../../styles";
 import { GetCOGStats } from "../helpers/api";
 import { cmap } from "../helpers/colormaps";
 import { createRangeLegendControl } from "../SimpleLegend";
@@ -58,13 +58,10 @@ export default function IOLayers(props: any) {
     sidebarContent: (
       <Routes>
         <Route
-          path="/apps/io-layers/:collection/:item/"
+          path="/viewer/:collection/:item/"
           element={<IOSidebar {...sidebarProps} />}
         ></Route>
-        <Route
-          path="/apps/io-layers/"
-          element={<IOSidebar {...sidebarProps} />}
-        ></Route>
+        <Route path="/viewer" element={<IOSidebar {...sidebarProps} />}></Route>
       </Routes>
     ),
   };
@@ -107,10 +104,15 @@ export default function IOLayers(props: any) {
 
   useEffect(() => {
     if (
-      location.pathname === "/apps/io-layers" ||
-      location.pathname === "/apps/io-layers/"
+      location.pathname === "/viewer" ||
+      location.pathname === "/viewer/" ||
+      location.pathname === "/"
     ) {
-      navigate("/apps/io-layers/chelsa-clim/bio1");
+      if (import.meta.env.VITE_ACERIO === "IO") {
+        navigate("/viewer/chelsa-clim/bio1");
+      } else {
+        navigate("/viewer/oiseaux-nicheurs-qc/tyrannus_tyrannus_pocc_2017");
+      }
     }
   }, [location]);
 

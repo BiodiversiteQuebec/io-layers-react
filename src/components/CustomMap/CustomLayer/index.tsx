@@ -31,7 +31,9 @@ function CustomLayer(props: any) {
     cartoDark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
     thunderforest:
       "https://{s}.tile.thunderforest.com/mobile-atlas/{z}/{x}/{y}.png",
-    mapbox: `https://api.mapbox.com/styles/v1/glaroc/cl8eqr05i000416umaxkuc4sp/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`,
+    mapbox: `https://api.mapbox.com/styles/v1/glaroc/cl8eqr05i000416umaxkuc4sp/tiles/256/{z}/{x}/{y}@2x?access_token=${
+      import.meta.env.REACT_APP_MAPBOX_TOKEN
+    }`,
   };
 
   useEffect(() => {

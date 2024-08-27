@@ -1,6 +1,6 @@
 import React from "react";
-import { RightContent } from "src/styles";
-import CustomMap from "src/components/CustomMap";
+import { RightContent } from "../../styles";
+import CustomMap from "../CustomMap";
 import { Route, Routes } from "react-router-dom";
 
 /**

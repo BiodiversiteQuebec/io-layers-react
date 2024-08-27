@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colors, Container } from "../../styles";
-import "src/css/external/common.css";
+import "../../css/external/common.css";
 
 export const SideContainer = styled(Container)`
   color: ${colors.white};
@@ -19,7 +19,7 @@ export const SiderTitleContainer = styled(Container)`
 `;
 
 export const Description = styled.div`
-  background-color: #7bb5b1;
+  background-color: #7ab5b0;
   width: 100%;
   color: #fff;
   padding: 12px;

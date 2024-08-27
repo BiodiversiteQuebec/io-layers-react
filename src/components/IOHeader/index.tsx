@@ -1,19 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { GetStac } from "../helpers/api";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-
-import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { styled, useTheme } from "@mui/material/styles";
-import Divider from "@mui/material/Divider";
 
 export default function IOHeader(props: any) {
   const { setSelectedLayer } = props;

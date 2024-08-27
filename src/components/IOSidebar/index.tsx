@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import { Selector } from "bq-react-lib";
 import {
   Title,
@@ -9,7 +9,7 @@ import {
   SelectorTitle,
   MainTitle,
   MainSubTitle,
-} from "src/components/Sidebar/SidebarForms/sidebarformstyles";
+} from "../Sidebar/SidebarForms/sidebarformstyles";
 import _ from "underscore";
 import { GetStac, GetStacSearch, GetCOGBounds } from "../helpers/api";
 import { useNavigate, useParams } from "react-router-dom";
@@ -263,7 +263,7 @@ function IOSidebar(props: any) {
               res.data.assets[Object.keys(res.data.assets)[0]].href
             );
             setSelectedLayerAssetName(Object.keys(res.data.assets)[0]);
-            navigate(`/apps/io-layers/${selectedCollection}/${val}`);
+            navigate(`/viewer/${selectedCollection}/${val}`);
           }
         }
       );
@@ -294,10 +294,20 @@ function IOSidebar(props: any) {
 
   useEffect(() => {
     GetStac("/collections", {}).then((res: any) => {
-      const items: any = res.data.collections.map((c: any) => ({
-        option: c.title,
-        value: c.id,
-      }));
+      const items: any = res.data.collections
+        .map((c: any) => ({
+          option: c.title,
+          value: c.id,
+        }))
+        .sort(function (a: any, b: any) {
+          if (a.option < b.option) {
+            return -1;
+          }
+          if (a.option > b.option) {
+            return 1;
+          }
+          return 0;
+        });
       setCollectionList(items);
     });
   }, []);
@@ -334,10 +344,8 @@ function IOSidebar(props: any) {
   return (
     <Grid sx={{ width: "300px", marginLeft: "15px" }}>
       <Title>
-        <MainTitle>{t("IO")}</MainTitle>
-        <MainSubTitle>
-          {"Explore layers available in the Bon-in-a-Box STAC catalog"}
-        </MainSubTitle>
+        <MainTitle>{import.meta.env.VITE_TITLE}</MainTitle>
+        <MainSubTitle>{import.meta.env.VITE_DESCRIPTION}</MainSubTitle>
       </Title>
       <Stack spacing={{ xs: 1, sm: 2, md: 2 }} sx={{ width: "100%" }}>
         <Item>

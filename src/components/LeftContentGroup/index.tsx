@@ -1,6 +1,6 @@
 import React from "react";
-import { LeftContent } from "src/styles";
-import Sidebar from "src/components/Sidebar";
+import { LeftContent } from "../../styles";
+import Sidebar from "../Sidebar";
 
 /**
  *

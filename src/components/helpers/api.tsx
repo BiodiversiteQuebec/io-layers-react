@@ -76,7 +76,8 @@ export const addTranslation = async (
 
 export const GetStac = async (endpoint: string, paramObj: any) => {
   let result;
-  const base_url = "https://io.biodiversite-quebec.ca/stac" as string;
+  const base_url = import.meta.env.VITE_STAC_URL as string;
+  //const base_url = "https://io.biodiversite-quebec.ca/stac/" as string;
   try {
     result = await axios({
       method: "get",
@@ -91,7 +92,7 @@ export const GetStac = async (endpoint: string, paramObj: any) => {
 
 export const GetStacSearch = async (searchObj: any) => {
   let result;
-  const base_url = "https://io.biodiversite-quebec.ca/stac/search" as string;
+  const base_url = (import.meta.env.VITE_STAC_URL + "search") as string;
   try {
     result = await axios({
       method: "post",
