@@ -29,10 +29,10 @@ start-staging: ## Copy the files to the static site deployment location.
 		rm -rif /tmp/io-staging-build/*;
 		docker compose -f docker/staging/docker-compose.yml up -d;
 #		docker container cp atlas-env-staging:/app/dist/ /tmp/io-staging-build/;
-		docker container cp atlas-env-staging:/app/io-layers/ /tmp/io-staging-build/;
+		docker container cp io-env-staging:/app/io-layers/ /tmp/io-staging-build/;
 #		cp -r /tmp/io-staging-build/dist/* /var/www/html/tableaux/tableau-io-layers-react/staging/atlas/;
 		sudo -u github-runner rsync -av -e "ssh" /tmp/io-staging-build/io-layers synapse:/var/www/tableau-io-layers-react/staging
-		docker stop atlas-env-staging; docker rm atlas-env-staging
+		docker stop io-env-staging; docker rm io-env-staging
 
 		
 
@@ -56,10 +56,10 @@ start-production: ## Start the development docker container.
 		rm -rif /tmp/io-production-build/*;
 		docker compose   -f docker/production/docker-compose.yml up -d;
 #		docker container cp atlas-env-production:/app/dist/ /tmp/io-production-build/;
-		docker container cp atlas-env-production:/app/io-layers/ /tmp/io-production-build/;
+		docker container cp io-env-production:/app/io-layers/ /tmp/io-production-build/;
 #		cp -r /tmp/io-production-build/dist/* /var/www/html/tableau-io-layers-react/production/atlas/;
 		sudo -u github-runner rsync -av -e "ssh" /tmp/io-production-build/io-layers synapse:/var/www/tableau-io-layers-react/production
-		docker stop atlas-env-production; docker rm atlas-env-production
+		docker stop io-env-production; docker rm io-env-production
 
 .PHONY: stop-production
 stop-production: ## Stop the development docker container.
