@@ -6,6 +6,7 @@ services:
       context: ../../
       dockerfile: docker/production/Dockerfile
     image: io-env-production
+    container_name: io-env-production
     restart: always
     ports:
       - "9096:80"

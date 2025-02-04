@@ -6,6 +6,7 @@ services:
       context: ../../
       dockerfile: docker/staging/Dockerfile
     image: io-env-staging
+    container_name: io-env-staging
     restart: always
     ports:
       - "9097:80"

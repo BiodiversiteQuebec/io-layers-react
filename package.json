@@ -55,7 +55,7 @@
   "scripts": {
     "devio": "vite -m io",
     "devacer": "vite -m acer",
-    "build": "vite build",
+    "build": "vite build  && mv dist io-layers",
     "toprodio": "vite build -m io --base=/viewer/ && rsync -r dist/* synapse.vhost33:/var/www/stac-viewer-io/viewer",
     "toprodacer": "vite build -m acer --base=/viewer/ && rsync -r dist/* synapse.vhost33:/var/www/stac-viewer-acer/viewer",
     "test": "jest",
