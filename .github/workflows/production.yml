@@ -12,5 +12,6 @@ jobs:
     steps:
       - name: deploying io in production
         uses: actions/checkout@v3
-      - run: make build-production
-      - run: make start-production
+      #- run: make build-production
+      #- run: make start-production
+      - run: echo "production"
