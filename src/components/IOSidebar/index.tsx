@@ -249,7 +249,13 @@ function IOSidebar(props: any) {
       } else {
         val = selectedLevel1;
       }
-      if (val.indexOf("-lc") !== -1 || val.indexOf("cobertura") !== -1) {
+      if (
+        val.indexOf("-lc") !== -1 ||
+        val.indexOf("cobertura") !== -1 ||
+        val.indexOf("cover") !== -1 ||
+        val.indexOf("use") !== -1 ||
+        val.startsWith("lu")
+      ) {
         setColormap("tab10");
         setColormapList(qualcmaps);
       } else if (qualcmaps.includes(colormap)) {

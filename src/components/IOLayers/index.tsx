@@ -1,9 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Card from "@mui/material/Card";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
 import { styled, useTheme } from "@mui/material/styles";
 import IOSidebar from "../IOSidebar";
 import CustomMap from "../CustomMap";
