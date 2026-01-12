@@ -1,6 +1,7 @@
 import React from "react";
 import { RightContent } from "../../styles";
-import CustomMap from "../CustomMap";
+import Map from "../Map";
+import MapOverlay from "../MapOverlay";
 import { Route, Routes } from "react-router-dom";
 
 /**
@@ -11,7 +12,8 @@ import { Route, Routes } from "react-router-dom";
 const RightContentGroup = (props: any) => {
   return (
     <RightContent style={{ width: "100vw" }}>
-      <CustomMap {...props} />
+      <Map {...props} />
+      <MapOverlay {...props} />
     </RightContent>
   );
 };

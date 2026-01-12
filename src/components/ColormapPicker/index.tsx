@@ -55,7 +55,8 @@ export function ColorPicker(props: any) {
         position: "absolute",
         left: "10px",
         bottom: "10px",
-        zIndex: 1000,
+        zIndex: 100003,
+        pointerEvents: "auto",
       }}
     >
       {items}

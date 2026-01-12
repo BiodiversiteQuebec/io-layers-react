@@ -26,6 +26,7 @@ export default function IOLayers(props: any) {
   const [colormapList, setColormapList] = useState(quantcmaps);
   const [isTimeSeriesCollection, setIsTimeSeriesCollection] = useState(false);
   const [timeSeriesLayers, setTimeSeriesLayers] = useState([]);
+  const [opacity, setOpacity] = useState(80);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -129,6 +130,8 @@ export default function IOLayers(props: any) {
     setColormap,
     setCollection,
     setItem,
+    opacity,
+    setOpacity,
     colormap,
     colormapList,
     isTimeSeriesCollection,

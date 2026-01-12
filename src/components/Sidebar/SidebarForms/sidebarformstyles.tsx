@@ -38,8 +38,8 @@ export const Title = styled.div`
   width: 100%;
   border-radius: 8px;
   padding: 0.5em 1em;
-  background: #e0b658;
-  color: white;
+  background: #038c7c;
+  color: ${colors.white};
   align-items: center;
   margin-bottom: 20px;
 `;
@@ -52,7 +52,7 @@ export const MainTitle = styled.div`
   font-family: "Lato";
   text-shadow: 1px 1px 1px #6666669c;
   letter-spacing: 0.05em;
-  color: white;
+  color: ${colors.white};
 `;
 
 export const MainSubTitle = styled.div`

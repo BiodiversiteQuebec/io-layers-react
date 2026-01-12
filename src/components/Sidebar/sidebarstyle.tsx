@@ -7,8 +7,9 @@ export const SideContainer = styled(Container)`
   width: 100%;
   background-color: transparent;
   display: block;
-  position: abolute;
+  position: absolute;
   left: 20px;
+  z-index: 100001;
 `;
 
 export const SiderTitleContainer = styled(Container)`
@@ -19,7 +20,7 @@ export const SiderTitleContainer = styled(Container)`
 `;
 
 export const Description = styled.div`
-  background-color: #7ab5b0;
+  background-color: #7bb5b1;
   width: 100%;
   color: #fff;
   padding: 12px;
