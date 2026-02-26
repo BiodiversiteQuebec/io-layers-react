@@ -46,7 +46,7 @@ export default function Map(props: any) {
               tileSize: 256,
             },
           },
-          terrain: { source: "terrain", exaggeration: 0.025 },
+          /*terrain: { source: "terrain", exaggeration: 0.025 },*/
           layers: [
             {
               id: "back",
@@ -62,7 +62,7 @@ export default function Map(props: any) {
                 "raster-opacity": opacity / 100,
               },
             },
-            {
+            /*{
               id: "hillsh",
               type: "hillshade",
               source: "terrain",
@@ -73,9 +73,9 @@ export default function Map(props: any) {
               layout: {
                 visibility: "visible",
               },
-            },
+            },*/
           ],
-          sky: {
+          /*sky: {
             "atmosphere-blend": [
               "interpolate",
               ["linear"],
@@ -93,7 +93,7 @@ export default function Map(props: any) {
             position: [1.5, 90, 40],
             intensity: 0.25,
             color: "#555",
-          },
+          },*/
         },
       });
 

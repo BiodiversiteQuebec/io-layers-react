@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import IOSidebar from "../IOSidebar";
-import CustomMap from "../CustomMap";
 import LeftContentGroup from "../LeftContentGroup";
 import RightContentGroup from "../RightContentGroup";
 import { AppContainer, BottomNavBarContainer, GlobalStyle } from "../../styles";
