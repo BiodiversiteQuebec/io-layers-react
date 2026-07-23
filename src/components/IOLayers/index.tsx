@@ -71,7 +71,7 @@ export default function IOLayers(props: any) {
   useEffect(() => {
     if (selectedLayerURL !== "" && typeof selectedLayerURL !== "undefined") {
       GetCOGStats(selectedLayerURL, logTransform).then((l: any) => {
-        const tiler = `https://tiler.biodiversite-quebec.ca/cog/tiles/{z}/{x}/{y}`;
+        const tiler = `https://tiler2.biodiversite-quebec.ca/cog/tiles/WebMercatorQuad/{z}/{x}/{y}`;
         let data = [];
         if (Object.keys(l).includes("data")) {
           data = l.data[Object.keys(l.data)[0]];
