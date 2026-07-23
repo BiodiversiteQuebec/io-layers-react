@@ -203,7 +203,9 @@ function IOSidebar(props: any) {
 
           if (res.data) {
             items = res.data.features.map((c: any) => {
-              let option = c.properties.description;
+              let option = c.properties["description:fr"]
+                ? c.properties["description:fr"]
+                : c.properties.description;
               if (
                 c.collection === "esacci-lc" ||
                 c.collection === "fragmentation-rmf"
