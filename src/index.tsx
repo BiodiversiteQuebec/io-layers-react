@@ -20,7 +20,7 @@ const theme = createTheme({
 
 root.render(
   <React.StrictMode>
-    <Router basename="/">
+    <Router basename={import.meta.env.BASE_URL}>
       <TranslateWrapper i18n={i18n}>
         <ThemeProvider theme={theme}>
           <App />

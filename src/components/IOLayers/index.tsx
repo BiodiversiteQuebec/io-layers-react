@@ -60,10 +60,10 @@ export default function IOLayers(props: any) {
     sidebarContent: (
       <Routes>
         <Route
-          path="/viewer/:collection/:item/"
+          path="/:collection/:item/"
           element={<IOSidebar {...sidebarProps} />}
         ></Route>
-        <Route path="/viewer" element={<IOSidebar {...sidebarProps} />}></Route>
+        <Route path="/" element={<IOSidebar {...sidebarProps} />}></Route>
       </Routes>
     ),
   };
@@ -72,11 +72,21 @@ export default function IOLayers(props: any) {
     if (selectedLayerURL !== "" && typeof selectedLayerURL !== "undefined") {
       GetCOGStats(selectedLayerURL, logTransform).then((l: any) => {
         const tiler = `https://tiler2.biodiversite-quebec.ca/cog/tiles/WebMercatorQuad/{z}/{x}/{y}`;
-        let data = [];
-        if (Object.keys(l).includes("data")) {
+        let data: any;
+        if (l && Object.keys(l).includes("data") && l.data) {
           data = l.data[Object.keys(l.data)[0]];
-        } else {
+        } else if (l && l[selectedLayerAssetName]) {
           data = l[selectedLayerAssetName][1];
+        } else {
+          // the COG statistics service failed or returned nothing usable;
+          // bail out rather than crash and leave the map's tile source pointed
+          // nowhere (which makes it fall back to fetching the app's own page).
+          console.warn(
+            "Could not load COG statistics for",
+            selectedLayerURL,
+            l
+          );
+          return;
         }
         let expression = "b1";
         if (logTransform) {
@@ -104,20 +114,18 @@ export default function IOLayers(props: any) {
           `${tiler}?url=${selectedLayerURL}&rescale=${rescale}&${params}`
         );
         setLegend(createRangeLegendControl(min, max, cmap(colormap)));
+      }).catch((err: any) => {
+        console.warn("Could not load COG statistics for", selectedLayerURL, err);
       });
     }
   }, [selectedLayerURL, logTransform, colormap, scaleOnMinMax]);
 
   useEffect(() => {
-    if (
-      location.pathname === "/viewer" ||
-      location.pathname === "/viewer/" ||
-      location.pathname === "/"
-    ) {
+    if (location.pathname === "/") {
       if (import.meta.env.VITE_ACERIO === "IO") {
-        navigate("/viewer/chelsa-clim/bio1");
+        navigate("/ouranos_past_climate_period/P1_AnnMeanTemp");
       } else {
-        navigate("/viewer/oiseaux-nicheurs-qc/tyrannus_tyrannus_pocc_2017");
+        navigate("/oiseaux-nicheurs-qc/tyrannus_tyrannus_pocc_2017");
       }
     }
   }, [location]);

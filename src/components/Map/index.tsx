@@ -27,8 +27,15 @@ export default function Map(props: any) {
             },
             cog: {
               type: "raster",
-              // start empty; tiles will be set when selectedLayerTiles becomes available
-              tiles: [selectedLayerTiles || ""],
+              // Placeholder until selectedLayerTiles becomes available (setTiles()
+              // below swaps in the real template). Must never be "" / a relative
+              // URL: MapLibre resolves that against the current page location,
+              // so it would repeatedly re-fetch this app's own HTML as a "tile"
+              // and throw when it fails to decode it as an image.
+              tiles: [
+                selectedLayerTiles ||
+                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+              ],
               tileSize: 256,
             },
             terrain: {

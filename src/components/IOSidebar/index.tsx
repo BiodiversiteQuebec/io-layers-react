@@ -272,7 +272,7 @@ function IOSidebar(props: any) {
               res.data.assets[Object.keys(res.data.assets)[0]].href
             );
             setSelectedLayerAssetName(Object.keys(res.data.assets)[0]);
-            navigate(`/viewer/${selectedCollection}/${val}`);
+            navigate(`/${selectedCollection}/${val}`);
           }
         }
       );
