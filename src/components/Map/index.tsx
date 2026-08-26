@@ -47,9 +47,9 @@ export default function Map(props: any) {
             },
             background: {
               type: "raster",
-              tiles: [
-                "https://01.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-              ],
+              url:
+                "https://api.maptiler.com/maps/dataviz-v4-dark/tiles.json?key=" +
+                import.meta.env.VITE_APP_MAPTILER_TOKEN,
               tileSize: 256,
             },
           },

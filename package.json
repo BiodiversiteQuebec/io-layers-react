@@ -53,7 +53,7 @@
     "devacer": "vite -m acer",
     "build": "vite build  && mv dist io-layers",
     "toprodio": "vite build -m io --base=/viewer2/ && rsync -r dist/* synapse.vhost33:/var/www/stac-viewer-io/viewer2",
-    "toprodacer": "vite build -m acer --base=/viewer/ && rsync -r dist/* synapse.vhost33:/var/www/stac-viewer-acer/viewer",
+    "toprodacer": "vite build -m acer --base=/viewer2/ && rsync -r dist/* synapse.vhost33:/var/www/stac-viewer-acer/viewer2",
     "test": "jest",
     "lint": "eslint './src/**/*.{d.ts,ts,tsx}'",
     "prepare": "husky install"
