@@ -110,15 +110,21 @@ export default function IOLayers(props: any) {
         }
         const rescale = `${min},${max}`;
         const params = new URLSearchParams(obj).toString();
+        let tileUrl = "";
+        if(selectedLayerURL.includes("CEC_land_cover/")) {
+          tileUrl = `${tiler}?url=${selectedLayerURL}`;
+        }else{
+          tileUrl = `${tiler}?url=${selectedLayerURL}&rescale=${rescale}&${params}`;
+        }
         setSelectedLayerTiles(
-          `${tiler}?url=${selectedLayerURL}&rescale=${rescale}&${params}`
+          tileUrl          
         );
         setLegend(createRangeLegendControl(min, max, cmap(colormap)));
       }).catch((err: any) => {
         console.warn("Could not load COG statistics for", selectedLayerURL, err);
       });
     }
-  }, [selectedLayerURL, logTransform, colormap, scaleOnMinMax]);
+  }, [collection, selectedLayerURL, logTransform, colormap, scaleOnMinMax]);
 
   useEffect(() => {
     if (location.pathname === "/") {
